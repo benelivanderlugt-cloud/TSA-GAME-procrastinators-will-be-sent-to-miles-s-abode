@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://diwer2c8r7u5l"]
+
+[ext_resource type="Texture2D" uid="uid://idusfws5jtpn" path="res://CAT IDLE.png" id="1_xhfnw"]
+
+[sub_resource type="GDScript" id="GDScript_5aq51"]
+script/source = "extends CharacterBody2D
+var jumpvelocity := -300
+var charspeed := 100
+var accel := 440
+var groundfriction := 1800
+var airresistance := 500
+var prevelocity: Vector2 = Vector2.ZERO
+func _physics_process(delta:float):
+	
+	if not is_on_floor():
+		velocity+= get_gravity()*delta
+	
+	if Input.is_action_just_pressed(\"Jump\") and is_on_floor():
+		velocity.y = jumpvelocity
+	if Input.is_action_just_released(\"Jump\"):
+		if velocity.y < 0:
+			velocity.y *= 0.2
+		
+	var direction := Input.get_axis(\"Left\", \"Right\")
+	if direction == 0 and is_on_floor():
+		$AnimatedSprite2D.play(\"CAT IDLE\")
+	else:
+		$AnimatedSprite2D.stop()
+	
+	if direction != 0:
+		
+		velocity.x = move_toward(velocity.x,charspeed * direction,accel * delta)
+		if (direction > 0 and velocity.x < 0) or (direction < 0 and velocity.x > 0):
+				velocity.x = 0 
+	
+	else:
+		var currentfriction := groundfriction if is_on_floor() else airresistance
+		velocity.x = move_toward(velocity.x, 0, currentfriction * delta)
+	if direction == -1:
+		$AnimatedSprite2D.flip_h = false
+	if direction == 1:
+		$AnimatedSprite2D.flip_h = true
+	prevelocity=velocity
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
+size = Vector2(4, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kne1u"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80uo"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxr5p"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdg3f"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtqjt"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ncpa"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi0c6"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp6x6"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tkgg"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oudfo"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6rpx"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3kul"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jatw7"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv870"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efikj"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itxgx"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgsek"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pi4m"]
+atlas = ExtResource("1_xhfnw")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccvgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpjcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kne1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxr5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdg3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtqjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ncpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi0c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp6x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tkgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ohk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oudfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6rpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3kul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jatw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv870")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efikj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itxgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgsek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pi4m")
+}],
+"loop": 1,
+"name": &"CAT IDLE",
+"speed": 4.5
+}, {
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=962730336]
+script = SubResource("GDScript_5aq51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1491815234]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_xhfnw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1443824293]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=368594989]
+sprite_frames = SubResource("SpriteFrames_ccvgh")
+animation = &"CAT IDLE"
+frame_progress = 0.35562944
