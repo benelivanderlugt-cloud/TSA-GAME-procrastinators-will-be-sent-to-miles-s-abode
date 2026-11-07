@@ -1,0 +1,7 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1794025194
+CAT IDLE.png::CompressedTexture2D::568950663972807615::1794025096::1794025203::1::::<><><>0<>0<>fb948106837934c27aaaa9bf82c3a1b0<>res://.godot/imported/CAT IDLE.png-5c1cc9d15d4231df3261963a89195203.ctex::
+CAT WALK.png::CompressedTexture2D::8273027727600220069::1794025096::1794025203::1::::<><><>0<>0<>2a9f0ae9c71535de1394c75da6748140<>res://.godot/imported/CAT WALK.png-0c800f528ccf9cad1e0bbf1974dc8fbf.ctex::
+icon.svg::CompressedTexture2D::4437092074209725017::1794025096::1794025203::1::::<><><>0<>0<>1e91a3d772167ba0ffacd54869603c30<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Main.tscn::PackedScene::6408455819046663563::1794025096::0::1::::<><><>0<>0<><>::uid://diwer2c8r7u5l::::res://Player.tscn<>uid://b4hmi1qdh5noj::::res://icon.svg
+Player.tscn::PackedScene::7766463759983757703::1794025096::0::1::::<><><>0<>0<><>::uid://idusfws5jtpn::::res://CAT IDLE.png

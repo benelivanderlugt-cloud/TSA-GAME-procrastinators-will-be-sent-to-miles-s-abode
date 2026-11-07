@@ -4,8 +4,8 @@
 
 [sub_resource type="GDScript" id="GDScript_5aq51"]
 script/source = "extends CharacterBody2D
-var jumpvelocity := -300
-var charspeed := 100
+var jumpvelocity := -500
+var charspeed := 300
 var accel := 440
 var groundfriction := 1800
 var airresistance := 500
@@ -13,13 +13,13 @@ var prevelocity: Vector2 = Vector2.ZERO
 func _physics_process(delta:float):
 	
 	if not is_on_floor():
-		velocity+= get_gravity()*delta
+		velocity+= get_gravity()*delta*0.8
 	
 	if Input.is_action_just_pressed(\"Jump\") and is_on_floor():
 		velocity.y = jumpvelocity
 	if Input.is_action_just_released(\"Jump\"):
 		if velocity.y < 0:
-			velocity.y *= 0.2
+			velocity.y *= 0.6
 		
 	var direction := Input.get_axis(\"Left\", \"Right\")
 	if direction == 0 and is_on_floor():
@@ -45,7 +45,7 @@ func _physics_process(delta:float):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
-size = Vector2(4, 9)
+size = Vector2(70, 61)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("1_xhfnw")
@@ -204,14 +204,16 @@ animations = [{
 script = SubResource("GDScript_5aq51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1491815234]
-position = Vector2(0, 3.5)
+position = Vector2(33, -22.5)
 shape = SubResource("RectangleShape2D_xhfnw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1443824293]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=368594989]
+position = Vector2(31, -30)
+scale = Vector2(5.0625, 5)
 sprite_frames = SubResource("SpriteFrames_ccvgh")
 animation = &"CAT IDLE"
 frame_progress = 0.35562944

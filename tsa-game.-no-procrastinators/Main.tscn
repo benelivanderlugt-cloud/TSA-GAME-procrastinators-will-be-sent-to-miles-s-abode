@@ -16,6 +16,6 @@ distance = -21.0
 shape = SubResource("WorldBoundaryShape2D_5aq51")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D" unique_id=851474262]
-position = Vector2(0.49999237, 42.5)
-scale = Vector2(1.4765625, 0.33593747)
+position = Vector2(4, 43)
+scale = Vector2(6.859375, 0.33593747)
 texture = ExtResource("2_r0du0")
